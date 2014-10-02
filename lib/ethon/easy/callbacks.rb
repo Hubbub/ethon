@@ -98,7 +98,7 @@ module Ethon
           size = left if size > left
 
           if size > 0
-            chunk = if body.respond_to?(:byteslice)
+            chunk = if body.respond_to?(:byteslice) && body.respond_to?(:encoding)
               body.byteslice(@request_body_read, size)
             elsif body.respond_to?(:read)
               body.read(size)
